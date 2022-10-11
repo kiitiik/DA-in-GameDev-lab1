@@ -26,7 +26,7 @@ Build Status
 Привести описание выполненных действий.
 создаем новый проект Dragon picker в unity hub 
 
-![image](github.com/kiitiik/DA-in-GameDev-lab1/blob/main/img/Снимок%20экрана%202022-10-11%20163502.png)
+![image](https://github.com/kiitiik/DA-in-GameDev-lab1/blob/main/img/Снимок%20экрана%202022-10-11%20163502.png)
 
 Открываем проект для работы 
 Изменем настройки камеры для корректного отображения сцены при запуске игры .
