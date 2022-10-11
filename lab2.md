@@ -100,16 +100,10 @@
 
 
 
-##Выводы
+## Выводы
 В итоге наш дракон летает машет крыльями и сбрасывает яица , так же при старте игры спавняться energyshild .
 В добавок был создан аккаунт на яндекс играх .
 
-Plugin	README
-Dropbox	[plugins/dropbox/README.md][PlDb]
-GitHub	[plugins/github/README.md][PlGh]
-Google Drive	[plugins/googledrive/README.md][PlGd]
-OneDrive	[plugins/onedrive/README.md][PlOd]
-Medium	[plugins/medium/README.md][PlMe]
-Google Analytics	[plugins/googleanalytics/README.md][PlGa]
-Powered by
-BigDigital Team: Denisov | Fadeev | Panov
+## Powered by
+
+**BigDigital Team: Denisov | Fadeev | Panov**
