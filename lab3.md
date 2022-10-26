@@ -53,8 +53,11 @@ Build Status
 — 4 Практическая работа «Структурирование исходных файлов в папке».
 
 Задание 3.
+
 — 5 Практическая работа «Интеграция игровых сервисов в готовое
+
 Задание 1
+
 Начнем с реализации перемещение EnergyShild
 для начало создаем новый файл скрипта и пишем для него следующий код 
 ```C#
@@ -65,13 +68,6 @@ using TMPro;
 
 public class EnergyShield : MonoBehaviour
 {
-    public TextMeshProUGUI scoreGT;
-    void Start() {
-      GameObject  scoreGO = GameObject.Find("Score");
-      scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
-      scoreGT.text = "0";
-    }
-
      void Update()
     {
         Vector3 mousePos2D = Input.mousePosition;
@@ -81,7 +77,18 @@ public class EnergyShield : MonoBehaviour
         pos.x = mousePos3D.x;
         this.transform.position = pos;
     }
-    private void OnCollisionEnter(Collision coll) {
+}
+
+```
+сначала мы принимаем позицию иыши по корднате z , после чего представляим их для
+трёхмерного пространства и изменяем позицию щита
+
+тепреь наш щит перемещается за курсором мыши 
+следующим шагом мы реализуем ловлю яиц для этого добавим метод OnCollisionEnter
+где будет проверять объект и если это яйцо удалять .
+Так же реализуем счетсик яиц пойманных игроком 
+```C#
+ private void OnCollisionEnter(Collision coll) {
         GameObject Collided = coll.gameObject;
         if (Collided.tag == "Draggon egg")
         {
@@ -92,8 +99,76 @@ public class EnergyShield : MonoBehaviour
         scoreGT.text =score.ToString();
     }
 }
-
 ```
+Для вывода количества яиц пойманных игроков добавим элемент ui text 
+добовляем convas в main camera ,для коректного отображения очков 
+помещаем его в угол экрана 
+для работы с текстовым объектом подключим библиотеку TMPro
+и напишем код для отображение очков игрока 
+```C#
+    public TextMeshProUGUI scoreGT;
+    void Start() {
+      GameObject  scoreGO = GameObject.Find("Score");
+      scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
+      scoreGT.text = "0";
+    }
+```
+теперь когда мы ловим яйцо счетчик очков увеличивается на 1 
+сделаем так чтобы яйцо удалялось при достижении определёной границы 
+```C#
+void Update()
+    {
+        if (transform.position.y < bottomY){
+            Destroy(this.gameObject);
+            DragonPIcker apScript = Camera.main.GetComponent<DragonPIcker>();
+            apScript.DraggonEggDestroyed(); 
+        }
+    }
+```
+
+и в скрипте DragonPIcker допишем метод DraggonEggDestroyed
+```C#
+   public void DraggonEggDestroyed(){
+        GameObject[] tDragonEggArray = GameObject.FindGameObjectsWithTag("Draggon egg");
+        foreach (GameObject tGO in tDragonEggArray){
+            Destroy (tGO);
+        }
+    }
+```
+создадим масив объектов исделаем цикл который проверят 
+объект в масиве и если он его находит то удаляет его 
+
+Задание 2
+
+используем библеотеку для работы со сценой UnityEngine.SceneManagement
+создадим лист объектов  shieldList для счета жизней 
+при старте сцены мы записываем 3 щита в лист 
+допишем в метод DraggonEggDestroyed код который будет удалять из листа щит при промахи и презапускать сцену
+```C#
+{
+    int shieldIndex = shieldList.Count - 1;
+        GameObject tShieldGo = shieldList[shieldIndex];
+        shieldList.RemoveAt(shieldIndex);
+        Destroy(tShieldGo);
+        if (shieldList.Count ==0){
+            SceneManager.LoadScene("_0Scene");
+        
+    }
+```
+и после того как счесчик достигает 0 сцена перезапускается на начальную 
+игра начинается заново
+добавим на сцену декаоротивные элементы ,для этого добавим асэты гор из юнити стора 
+добавим гору на сцены и сменем ей кардинаты 
+так же скачаем скай бокс и заменим его в настройках камеры 
+итоговый результат 
+отсртируем папки в проекте и удалим ненужные асэты 
+итогвый результат 
+Соберем билд проекта ,изменяем настройки игрока и качества 
+качаем yandex game plagin и добавляем в проект 
+нажимаем кнопку build and run собираем проект в папку 
+готовый билд архивируем  и загружаем в наш черновик на yandexgame 
+после проверки файла появится ссылка на игру ,где мы уже можем запустить игру в браузере и воспользоваться сервисами yandrexgame 
+
 
 Выводы
 Я скачал и настроил Unity для работы .Так же был создан проект в, котором затрагивались базовые элементы работы с Unity. https://github.com/kiitiik/Unity-lab-1
