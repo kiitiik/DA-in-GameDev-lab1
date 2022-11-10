@@ -228,8 +228,10 @@ public class AudioControler : MonoBehaviour
 ```
 в итоге меню наастроек выглядит так 
 
-## Выводы
 ![image](https://github.com/kiitiik/DA-in-GameDev-lab1/blob/main/img/4.12.png)
+
+
+## Выводы
 
 В итоге реализован основной функционал игры ,теперь осталось настройить sdk сервисы 
 
