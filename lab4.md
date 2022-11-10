@@ -235,3 +235,4 @@ public class AudioControler : MonoBehaviour
 
 В итоге реализован основной функционал игры ,теперь осталось настройить sdk сервисы 
 
+ссылка на hab с проектом https://github.com/kiitiik/Unity_lab_4
