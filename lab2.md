@@ -103,7 +103,7 @@
 ## Выводы
 В итоге наш дракон летает машет крыльями и сбрасывает яица , так же при старте игры спавняться energyshild .
 В добавок был создан аккаунт на яндекс играх .
-
+https://github.com/kiitiik/Unity-lab-2
 ## Powered by
 
 **BigDigital Team: Denisov | Fadeev | Panov**
